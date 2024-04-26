@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tetris Game</title>
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <main id="grid" class="grid">
+        <div class="game-alert">
+          <h1>Tetris Game</h1>
+          <button>Start Game</button>
+        </div>
+        <div class="background">
+          <!-- The Style Of The Grid -->
+        </div>
+        <div class="playground">
+          <!-- Where The blocks Will Be By JS -->
+          <div class="cell"></div>
+        </div>
+      </main>
+      <aside>
+        <div id="next-blocks">
+          <h3>Next</h3>
+          <div id="first-next" class="block-container"></div>
+          <div id="second-next" class="block-container"></div>
+          <div id="third-next" class="block-container"></div>
+        </div>
+        <div id="score">
+          <h3>Score</h3>
+          <span>00</span>
+        </div>
+        <div id="block-holder-container">
+          <h3>Hold</h3>
+          <div id="block-holder" class="block-container"></div>
+        </div>
+      </aside>
+      <div id="controls" class="controls">
+        <div class="left">L</div>
+        <div class="right">R</div>
+        <div class="down">B</div>
+        <div class="instant-fall">I</div>
+        <div class="rotate">R</div>
+        <div class="hold">H</div>
+      </div>
+    </div>
+
+    <a
+      href="https://github.com/Mohammed-Beltagy/Tetris_Game"
+      target="_blank"
+      class="github"
+      ><img src="github.svg" alt="Github Repository"
+    /></a>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,204 @@
+/*  ======
+    Global
+    ======  */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #eee;
+  /* Background Rules */
+  background: linear-gradient(
+    to bottom right,
+    #bde0fe 0%,
+    #dac4ec 50%,
+    #bde0fe 100%
+  );
+  background-size: 100000% 100000%;
+  animation: move-background 10s linear infinite;
+}
+@keyframes move-background {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+/*  ============
+    1. Container
+    ============  */
+.container {
+  --unit: 30px;
+  --cols-count: 11;
+  --rows-count: 21;
+  width: fit-content;
+  margin: var(--unit) auto 0;
+  /* grid */
+  display: grid;
+  grid-template-columns: calc(var(--unit) * var(--cols-count)) calc(
+      var(--unit) * 4.5
+    );
+  gap: calc(var(--unit) / 2);
+}
+/* Change (unit) value for small media */
+@media (max-width: 575px), (max-height: 630px) {
+  .container {
+    --unit: 15px;
+  }
+}
+
+/*  =======
+    2. Grid
+    =======  */
+.grid {
+  position: relative;
+  width: calc(var(--unit) * var(--cols-count));
+  height: calc(var(--unit) * var(--rows-count));
+  border: 2px solid #3b4a65;
+  border-top: none;
+}
+.background,
+.playground,
+.game-alert {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+/* controls */
+.grid::after {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  content: "down: s - left: a - right: d - rotate: w - instant fall: space - Hold Block: shift";
+  white-space: break-spaces;
+  text-align: center;
+  position: absolute;
+  top: 100%;
+  color: #3b4a65;
+  padding: 10px;
+}
+/* remove for Touch Devices */
+@media (pointer: none), (pointer: coarse) {
+  .grid::after {
+    display: none;
+  }
+}
+
+/* Game Alert Design */
+.grid .game-alert {
+  background-color: #fff7;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.game-alert h1 {
+  color: #3b4a65;
+  text-align: center;
+}
+.game-alert button {
+  padding: 5px;
+}
+/* Background Design */
+.grid .horizontal-line {
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background-color: #fff5;
+  transform: translateY(50%);
+}
+.grid .vertical-line {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background-color: #fff5;
+  transform: translateX(-50%);
+}
+/* Blocks Design */
+.playground {
+  overflow: hidden;
+}
+.cell {
+  position: absolute;
+  width: var(--unit);
+  height: var(--unit);
+}
+.background .cell-shadow {
+  position: absolute;
+  width: var(--unit);
+  height: var(--unit);
+  box-sizing: border-box;
+  opacity: 0.3;
+}
+
+/*  ========
+    3. Aside
+    ========  */
+aside > div {
+  text-align: center;
+  margin-bottom: 5px;
+  padding-bottom: 15px;
+  background-color: #fff7;
+  color: #3b4a65;
+}
+#next-blocks,
+#block-holder-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.block-container {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+/*  ==================
+    3. Touch Constrols
+    ==================  */
+
+.controls {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 5px;
+}
+@media (pointer: none), (pointer: coarse) {
+  .controls {
+    display: flex;
+  }
+}
+.controls > div {
+  margin: 0 3px;
+  padding: 10px;
+  background-color: #fff5;
+  color: #3b4a65;
+  /* border: solid #ddd 1px; */
+  border-radius: 3px;
+}
+.controls .instant-fall {
+  margin-left: auto;
+}
+
+/*  =========
+    3. GITHUB
+    =========  */
+.github {
+  position: absolute;
+  inset: auto auto 5px 5px;
+  width: 50px;
+  margin: 0 auto;
+  color: #3b4a65;
+  font-weight: 700;
+  text-decoration: none;
+}
+.github img {
+  width: 100%;
+}
+
+@media (pointer: none), (pointer: coarse) {
+  .github {
+    inset: auto 0 0;
+  }
+}
